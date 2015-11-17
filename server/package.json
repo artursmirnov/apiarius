@@ -14,7 +14,7 @@
     "sails-disk": "~0.10.0",
     "sails-generate-ember-blueprints": "0.0.9",
     "sails-hook-autoreload": "^0.11.5",
-    "sails-hook-dev": "^1.0.0",
+    "sails-hook-dev": "git://github.com/balderdashy/sails-hook-dev.git#master",
     "sails-mysql": "^0.11.1"
   },
   "scripts": {
