@@ -1,13 +1,18 @@
 {
   "name": "apiarius",
   "version": "0.0.1",
-  "description": "A blank sane stack project.",
+  "description": "Automatic Documentation generator for Github projects",
+  "private": true,
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cd client && ember test && cd ../server && npm test"
   },
-  "author": "",
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/artursmirnov/apiarius.git"
+  },
+  "author": "Artur Smirnov",
+  "license": "proprietary",
   "dependencies": {
     "sane-cli": "0.0.24"
   }

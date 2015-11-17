@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "apiarius-server",
   "private": true,
   "version": "0.0.0",
   "description": "a Sails application",
@@ -19,13 +19,14 @@
   },
   "scripts": {
     "debug": "node debug app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+	"test": "mocha test/bootstrap.test.js test/unit/**/*.test.js"
   },
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/anonymous node/sails user/server.git"
+    "url": "git://github.com/artursmirnov/apiarius.git"
   },
-  "author": "anonymous node/sails user",
-  "license": ""
+  "author": "Artur Smirnov",
+  "license": "proprietary"
 }
