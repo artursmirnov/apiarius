@@ -2,3 +2,7 @@
 
 # apiarius
 Automatic API documentation generator
+
+####Conventions:
+* directory = API documentation instance
+* repository = source code storage
