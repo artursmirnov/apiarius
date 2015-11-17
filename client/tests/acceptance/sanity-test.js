@@ -21,6 +21,6 @@ describe('Acceptance: Sanity', function() {
   });
 
   it('can run tests', function() {
-    expect(true).to.be.true;
+    expect('everthing').to.be.ok;
   });
 });
