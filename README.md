@@ -6,3 +6,10 @@ Automatic API documentation generator
 ####Conventions:
 * directory = API documentation instance
 * repository = source code storage
+
+####Links:
+Project: [overv.io](https://overv.io/workspace/artursmirnov/zany-herd/board/)
+Github API reference: https://developer.github.com/v3/
+YUIDoc: https://github.com/yui/yuidoc
+Sane Stack: http://sanestack.com/
+Semaphore CI: https://semaphoreci.com/artursmirnov/apiarius
