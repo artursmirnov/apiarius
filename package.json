@@ -5,7 +5,11 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "test": "cd client && ember test && cd ../server && npm test"
+    "test": "cd client && ember test && cd ../server && npm test",
+	"build": "cd client && npm install && bower install && cd ../server && npm install && cd .. && npm install",
+	"start": "pm2 start server/app.js -x --name='apiarius-api' -- --prod",
+	"stop": "pm2 stop apiarius-api",
+	"restart": "pm2 restart apiarius-api"
   },
   "repository": {
     "type": "git",
