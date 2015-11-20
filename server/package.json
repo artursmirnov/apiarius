@@ -15,12 +15,12 @@
     "sails-generate-ember-blueprints": "0.0.9",
     "sails-hook-autoreload": "^0.11.5",
     "sails-hook-dev": "git://github.com/balderdashy/sails-hook-dev.git#master",
-    "sails-mysql": "^0.11.1"
+    "sails-mysql": "^0.11.2"
   },
   "scripts": {
     "debug": "node debug app.js",
     "start": "node app.js",
-	"test": "mocha test/bootstrap.test.js test/unit/**/*.test.js"
+    "test": "mocha test/bootstrap.test.js test/unit/**/*.test.js"
   },
   "main": "app.js",
   "repository": {
