@@ -13,6 +13,11 @@ Automatic API documentation generator
 * YUIDoc: https://github.com/yui/yuidoc
 * Sane Stack: http://sanestack.com/
 * Semaphore CI: https://semaphoreci.com/artursmirnov/apiarius
+* Moment.js: https://github.com/stefanpenner/ember-moment#usage
+* ember-bootstrap: http://kaliber5.github.io/ember-bootstrap/
+* Font Awesome: https://github.com/martndemus/ember-cli-font-awesome#basic-usage
+* Ember i18n: https://github.com/jamesarosen/ember-i18n#ember-i18n---internationalization-for-ember
+
 
 ####Workflow:
 * Create new issue in backlog
