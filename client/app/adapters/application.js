@@ -3,7 +3,7 @@ import config from 'client/config/environment';
 
 export default DS.RESTAdapter.extend({
   coalesceFindRequests: true,
-  namespace: config.apiPrefix,
+  namespace: config.apiPrefix
   //this is dependent on production/development environment
   //It is configured in config/environment.js
   //host: ClientENV.hostUrl
