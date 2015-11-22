@@ -16,7 +16,7 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-  		apiPrefix: 'api/v1'
+      apiPrefix: 'api/v1'
     }
   };
 
