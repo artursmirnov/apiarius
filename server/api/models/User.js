@@ -19,11 +19,6 @@ module.exports = {
       required: true
     },
 
-    password: {
-      type: 'string',
-      required: true
-    },
-
     github_token: {
       type: 'string'
     }
