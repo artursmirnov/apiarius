@@ -1,6 +1,18 @@
 <div class="well text-center">
-  {{#bs-button type="success" class="btn-lg" icon="fa fa-github"}}
-      Sign in with Github
-  {{/bs-button}}
+
+  {{#if session.isAuthenticated}}
+
+    {{#bs-button type="default" class="btn-lg" icon="fa fa-logout" action="logout"}}
+        Log out
+    {{/bs-button}}
+
+  {{else}}
+
+    {{#bs-button type="success" class="btn-lg" icon="fa fa-github" action="login"}}
+      Log in with Github
+    {{/bs-button}}
+
+  {{/if}}
+
 </div>
 

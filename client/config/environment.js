@@ -18,6 +18,11 @@ module.exports = function(environment) {
       // when it is created
       apiPrefix: 'api/v1'
     }
+
+  };
+
+  ENV['ember-simple-auth'] = {
+    authenticationRoute: 'join'
   };
 
   if (environment === 'development') {
