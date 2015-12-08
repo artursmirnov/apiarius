@@ -3,12 +3,12 @@ import ENV from 'client/config/environment';
 
 export default OAuth2PasswordGrant.extend({
 
-  serverTokenEndpoint: "/" + ENV.APP.apiPrefix + "/session",
+  serverTokenEndpoint: ENV.APP.apiPrefix + "/session",
 
-  authenticate (options) {
+  authenticate () {
     this._super()
-      .catch( (reason) => {
-        document.location.href = "/" + ENV.APP.apiPrefix + "/login";
+      .catch( () => {
+        document.location.href = ENV.APP.apiPrefix + "/login";
       });
   }
 
