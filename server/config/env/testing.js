@@ -7,6 +7,12 @@ module.exports = {
     scope: ['user', 'repo', 'write:repo_hook']
   },
 
+  connections: {
+    localDiskDb: {
+      adapter: 'sails-disk'
+    }
+  },
+
   models: {
     connection: 'localDiskDb' // check connection name
   }
