@@ -7,9 +7,9 @@ before(function(done) {
 
   Sails.lift({
     // configuration for testing purposes
+    environment: 'testing'
   }, function(err, server) {
     sails = server;
-    console.log(sails.config.environment);
     if (err) return done(err);
     // here you can load fixtures, etc.
     done(err, sails);
