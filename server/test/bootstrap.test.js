@@ -9,6 +9,7 @@ before(function(done) {
     // configuration for testing purposes
   }, function(err, server) {
     sails = server;
+    console.log(sails.config.environment);
     if (err) return done(err);
     // here you can load fixtures, etc.
     done(err, sails);
