@@ -26,7 +26,7 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': 'isAuthorized'
+  '*': 'isAuthorized',
 
   /***************************************************************************
   *                                                                          *
@@ -48,4 +48,18 @@ module.exports.policies = {
 		// before letting any users feed our rabbits
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
+
+  AuthController: {
+
+    //'*': false,
+
+    login: true,
+
+    token: true,
+
+    github_cb: true,
+
+    logout: true
+
+  }
 };

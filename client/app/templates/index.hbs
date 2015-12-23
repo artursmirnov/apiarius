@@ -2,6 +2,10 @@
 
   {{#if session.isAuthenticated}}
 
+    <p>
+        User: {{session.data.user.displayName}}
+    </p>
+
     {{#bs-button type="default" class="btn-lg" icon="fa fa-logout" action="logout"}}
         Log out
     {{/bs-button}}

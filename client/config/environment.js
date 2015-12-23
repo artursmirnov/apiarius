@@ -16,17 +16,23 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-      apiPrefix: 'api/v1'
+    },
+
+    API: {
+      prefix: 'api/v1',
+      host: ''
     }
 
   };
 
   ENV['ember-simple-auth'] = {
-    authenticationRoute: 'join'
+    authenticationRoute: 'login',
+    routeAfterAuthentication: 'index',
+    routeIfAlreadyAuthenticated: 'index'
   };
 
   if (environment === 'development') {
-    ENV.APP.apiPrefix = "http://localhost:1337/" + ENV.APP.apiPrefix;
+    ENV.API.host = "http://localhost:1337";
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;

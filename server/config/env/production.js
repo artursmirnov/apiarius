@@ -35,4 +35,11 @@ module.exports = {
   //   level: "silent"
   // }
 
+  apiHost: '',
+  uiHost: '',
+
+  github: {
+    callback_url: 'http://apiarius.artursmirnov.com/api/v1/auth/github_cb'
+  }
+
 };

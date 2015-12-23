@@ -3,13 +3,17 @@ import ENV from 'client/config/environment';
 
 export default OAuth2PasswordGrant.extend({
 
-  serverTokenEndpoint: ENV.APP.apiPrefix + "/session",
+  serverTokenEndpoint: ENV.API.host + '/' + ENV.API.prefix + "/auth/token",
 
-  authenticate () {
-    this._super()
-      .catch( () => {
-        document.location.href = ENV.APP.apiPrefix + "/login";
-      });
+  serverTokenRevocationEndpoint: ENV.API.host + '/' + ENV.API.prefix + "/auth/logout",
+
+  refreshAccessTokens: false,
+
+  authenticate (authCode) {
+    return this.makeRequest( this.get('serverTokenEndpoint'), {
+      grant_type: 'auth_code',
+      auth_code: authCode
+    });
   }
 
 });

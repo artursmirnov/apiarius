@@ -10,15 +10,15 @@
 
 var passport = require('passport');
 
-module.exports = function isAuthorized (req, res, next) {
-
-  // User is allowed, proceed to the next policy, 
-  // or if this is the last policy, the controller
-  if (req.session.authenticated) {
+module.exports = function (req, res, next) {
+  var authHeader = req.headers.authorization || '';
+  var token = authHeader.replace("Bearer ", "");
+  if (!token) return res.unauthorized();
+  User.findOne( { access_token: token }, function (err, user) {
+    if (err || !user) return res.unauthorized();
+    req.user = user;
     return next();
-  }
-
-  // User is not allowed
-  // (default res.forbidden() behavior can be overridden in `config/403.js`)
-  return res.forbidden('You are not permitted to perform this action.');
+  });
 };
+
+//module.exports = passport.authenticate('bearer', { session: false });

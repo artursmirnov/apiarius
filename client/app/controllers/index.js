@@ -9,9 +9,7 @@ export default Ember.Controller.extend({
   actions: {
 
     login () {
-      this.get('session').authenticate('authenticator:apiarius-github').catch( (reason) => {
-        this.set('errorMessage', reason);
-      });
+      this.transitionToRoute('login');
     },
 
     logout () {
