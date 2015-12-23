@@ -2,9 +2,7 @@
 
 module.exports.github = {
 
-  callback_url: '/auth/github_cb', // overridden in ./env/*,
-  client_id: '123', // defaults for tests
-  client_secret: '123', // defaults for tests
+  callback_url: '/auth/github_cb', // overridden in ./env/*
   scope: ['user', 'repo', 'write:repo_hook']
 
 };
