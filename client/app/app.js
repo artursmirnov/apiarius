@@ -3,14 +3,20 @@ import Resolver from 'ember/resolver';
 import loadInitializers from 'ember/load-initializers';
 import config from 'client/config/environment';
 
-var App;
+let App;
 
 Ember.MODEL_FACTORY_INJECTIONS = true;
 
 App = Ember.Application.extend({
   modulePrefix: config.modulePrefix,
   podModulePrefix: config.podModulePrefix,
-  Resolver: Resolver
+  Resolver,
+  jscsOptions: {
+    configPath: '.jscsrc',
+    enabled: true,
+    esnext: true,
+    disableTestGenerator: false
+  }
 });
 
 loadInitializers(App, config.modulePrefix);
