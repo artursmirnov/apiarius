@@ -1,0 +1,12 @@
+{
+  "ecmaVersion": 5,
+  "libs": [],
+  "plugins": {
+    "node": {},
+    "modules": {},
+    "commonjs": {}
+  },
+  "loadEagerly": [
+    "api/**.js"
+  ]
+}
