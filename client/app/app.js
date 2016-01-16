@@ -10,13 +10,7 @@ Ember.MODEL_FACTORY_INJECTIONS = true;
 App = Ember.Application.extend({
   modulePrefix: config.modulePrefix,
   podModulePrefix: config.podModulePrefix,
-  Resolver,
-  jscsOptions: {
-    configPath: '.jscsrc',
-    enabled: true,
-    esnext: true,
-    disableTestGenerator: false
-  }
+  Resolver
 });
 
 loadInitializers(App, config.modulePrefix);

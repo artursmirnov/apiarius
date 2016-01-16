@@ -6,6 +6,21 @@ module.exports = function(defaults) {
     // Add options here
     'ember-bootstrap': {
       'importBootstrapTheme': true
+    },
+    jscsOptions: {
+      configPath: '.jscsrc',
+      enabled: true,
+      esnext: true,
+      disableTestGenerator: false,
+      testGenerator: function(relativePath, errors) {
+        return `
+          describe('JSCS | ${relativePath}', function() {
+            it('should pass jscs', function() {
+              expect(${errors}).to.be.empty;
+            });
+          })
+        `;
+      }
     }
   });
 
