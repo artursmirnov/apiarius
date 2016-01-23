@@ -15,7 +15,7 @@ describeModule(
   },
   function() {
     it('exists', function() {
-      var route = this.subject();
+      let route = this.subject();
       expect(route).to.be.ok;
     });
   }
