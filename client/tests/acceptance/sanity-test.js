@@ -10,7 +10,7 @@ import startApp from '../helpers/start-app';
 import Ember from 'ember';
 
 describe('Acceptance: Sanity', function() {
-  var application;
+  let application;
 
   beforeEach(function() {
     application = startApp();

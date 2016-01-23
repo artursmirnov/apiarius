@@ -1,0 +1,12 @@
+{
+  "ecmaVersion": 6,
+  "libs": [
+    "browser",
+    "jquery"
+  ],
+  "loadEagerly": [
+    "app/*.js",
+    "bower_components/ember/ember.js",
+    "bower_components/moment/moment.js"
+  ]
+}

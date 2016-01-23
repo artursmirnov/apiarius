@@ -3,14 +3,14 @@ import ENV from 'client/config/environment';
 
 export default OAuth2PasswordGrant.extend({
 
-  serverTokenEndpoint: ENV.API.host + '/' + ENV.API.prefix + "/auth/token",
+  serverTokenEndpoint: `${ENV.API.host}/${ENV.API.prefix}/auth/token`,
 
-  serverTokenRevocationEndpoint: ENV.API.host + '/' + ENV.API.prefix + "/auth/logout",
+  serverTokenRevocationEndpoint: `${ENV.API.host}/${ENV.API.prefix}/auth/logout`,
 
   refreshAccessTokens: false,
 
-  authenticate (authCode) {
-    return this.makeRequest( this.get('serverTokenEndpoint'), {
+  authenticate(authCode) {
+    return this.makeRequest(this.get('serverTokenEndpoint'), {
       grant_type: 'auth_code',
       auth_code: authCode
     });

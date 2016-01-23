@@ -59,9 +59,8 @@ module.exports = {
         displayName: this.display_name,
         email: this.email,
         githubProfile: this.github_profile
-      }
+      };
     }
 
   }
 };
-
