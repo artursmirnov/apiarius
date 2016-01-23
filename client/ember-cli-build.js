@@ -10,7 +10,6 @@ module.exports = function(defaults) {
     jscsOptions: {
       configPath: '.jscsrc',
       enabled: true,
-      esnext: true,
       disableTestGenerator: false,
       testGenerator: function(relativePath, errors) {
         return `
