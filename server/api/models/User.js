@@ -52,7 +52,7 @@ module.exports = {
       protected: true
     },
 
-    toJSON: function () {
+    toJSON: function() {
       return {
         id: this.id,
         username: this.username,

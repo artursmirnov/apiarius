@@ -7,14 +7,14 @@
 
 module.exports = {
 
-  me: function (req, res) {
-    if (req.user)
+  me: function(req, res) {
+    if (req.user) {
       res.ok({
         user: req.user.toJSON()
       });
-    else
+    } else {
       res.unauthorized();
+    }
   }
 
 };
-

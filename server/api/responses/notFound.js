@@ -17,7 +17,7 @@
  * automatically.
  */
 
-module.exports = function notFound (data, options) {
+module.exports = function notFound(data, options) {
 
   // Get access to `req`, `res`, & `sails`
   var req = this.req;
@@ -30,8 +30,9 @@ module.exports = function notFound (data, options) {
   // Log error to console
   if (data !== undefined) {
     sails.log.verbose('Sending 404 ("Not Found") response: \n',data);
+  } else {
+    sails.log.verbose('Sending 404 ("Not Found") response');
   }
-  else sails.log.verbose('Sending 404 ("Not Found") response');
 
   // Only include errors in response if application environment
   // is not set to 'production'.  In production, we shouldn't

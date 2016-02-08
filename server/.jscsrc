@@ -1,4 +1,13 @@
 {
 	"preset": "node-style-guide",
-	"maximumLineLength": null
+	"maximumLineLength": null,
+	"requireCamelCaseOrUpperCaseIdentifiers": {
+		"ignoreProperties": true
+	},
+	"requireTrailingComma": false,
+	"requireCurlyBraces": {
+		"keywords": ["if", "else", "for", "while", "do", "try", "catch", "case", "default"],
+		"allExcept": ["return" , "continue", "break"]
+	},
+	"requireCapitalizedComments": false
 }

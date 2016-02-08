@@ -41,9 +41,9 @@ module.exports.connections = {
   *                                                                          *
   ***************************************************************************/
 
-  //docker host uses db, otherwise use localhost or the IP of your db
-  //credentials for docker are defined in the fig.yml
-  //otherwise dependent on your setup
+  // docker host uses db, otherwise use localhost or the IP of your db
+  // credentials for docker are defined in the fig.yml
+  // otherwise dependent on your setup
   mysql: {
     adapter: 'sails-mysql',
     host: '',
@@ -61,9 +61,9 @@ module.exports.connections = {
   *                                                                          *
   ***************************************************************************/
 
-  //docker host uses db, otherwise use localhost or the IP of your db
-  //credentials for docker are defined in the fig.yml
-  //otherwise dependent on your setup
+  // docker host uses db, otherwise use localhost or the IP of your db
+  // credentials for docker are defined in the fig.yml
+  // otherwise dependent on your setup
   mongo: {
     adapter: 'sails-mongo',
     host: 'localhost',
@@ -82,9 +82,9 @@ module.exports.connections = {
   *                                                                          *
   ***************************************************************************/
 
-  //docker host uses db, otherwise use localhost or the IP of your db
-  //credentials for docker are defined in the fig.yml
-  //otherwise dependent on your setup
+  // docker host uses db, otherwise use localhost or the IP of your db
+  // credentials for docker are defined in the fig.yml
+  // otherwise dependent on your setup
   postgresql: {
     adapter: 'sails-postgresql',
     host: 'localhost',

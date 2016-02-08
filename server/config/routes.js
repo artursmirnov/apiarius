@@ -32,9 +32,9 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  //'/': {
-  //  view: 'homepage'
-  //}
+  // '/': {
+  //   view: 'homepage'
+  // }
 
   /***************************************************************************
   *                                                                          *
@@ -47,11 +47,11 @@ module.exports.routes = {
   ***************************************************************************/
 
 
-  //This automatically serves all routes, apart from /api/** routes to ember
-  //(which will be initialized in assets/index.html). This route needs to be
-  //at the very bottom if you want to server other routes through Sails, because they are matched in order
+  // This automatically serves all routes, apart from /api/** routes to ember
+  // (which will be initialized in assets/index.html). This route needs to be
+  // at the very bottom if you want to server other routes through Sails, because they are matched in order
   // '/*': { controller: 'App', action: 'serve', skipAssets: true, skipRegex: /^\/api\/.*$/ }
 
-  //You could also just serve the index view directly if you want
-  //'/*': { view: 'index', skipAssets: true, skipRegex: /^\/api\/.*$/ }
+  // You could also just serve the index view directly if you want
+  // '/*': { view: 'index', skipAssets: true, skipRegex: /^\/api\/.*$/ }
 };
