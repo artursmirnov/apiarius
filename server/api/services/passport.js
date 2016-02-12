@@ -30,29 +30,31 @@ passport.use(
     },
     function(accessToken, refreshToken, profile, done) {
 
-      User.findOrCreate({
-          username: profile.username
-        }, {
-          username: profile.username,
-          email: profile.emails[0].value,
-          display_name: profile.displayName,
-          github_id: profile.id,
-          github_profile: profile.profileUrl
-        },
-        function(err, user) {
-          if (err || !user) return done(err, false);
+      var newUserData = {
+        username: profile.username,
+        email: profile.emails[0].value,
+        display_name: profile.displayName,
+        github_id: profile.id,
+        github_profile: profile.profileUrl
+      };
+      var searchCriteria = {
+        username: profile.username
+      };
 
+      User.findOrCreate(searchCriteria, newUserData)
+        .then(function(user) {
           user.github_token = accessToken;
           user.github_refresh_token = refreshToken;
           user.access_token = md5(accessToken);
           user.auth_code = md5(user.name + new Date().valueOf());
-
-          user.save(function(err, user) {
-            done(err, user || false);
-          });
-
-        }
-      );
+          return user.save();
+        })
+        .then(function(user) {
+          done(null, user);
+        })
+        .catch(function(err) {
+          done(err, false);
+        });
     }
   )
 );
@@ -61,13 +63,13 @@ passport.use(
 passport.use(
   new BearerStrategy(function(token, done) {
 
-    User.findOne({
-        access_token: token
-      },
-      function(err, user) {
-        return done(err, user || false);
-      }
-    );
+    User.findOne({ access_token: token })
+      .then(function(user) {
+        done(null, user);
+      })
+      .catch(function(err) {
+        done(err, false);
+      });
 
   })
 );

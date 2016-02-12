@@ -35,33 +35,46 @@ module.exports = {
     var authCode = req.body.auth_code;
     if (!authCode) return res.forbidden('Auth code not found');
 
-    User.findOne({
-      auth_code: authCode
-    }, function(err, user) {
-      if (err) return res.serverError(err);
-      if (!user) return res.notFound('Incorrect auth code');
-      if (!user.access_token) return res.forbidden('User does not authorized with github');
-      user.auth_code = null;
-      user.save();
-      return res.ok(JSON.stringify({
-        access_token: user.access_token
-      }));
-    });
+    User.findOne({ auth_code: authCode })
+      .then(function(user) {
+        if (!user) {
+          res.notFound('Incorrect auth code');
+        } else if (!user.access_token) {
+          res.forbidden('User does not authorized with github');
+        } else {
+          user.auth_code = null;
+          return user.save();
+        }
+      })
+      .then(function(user) {
+        res.send({
+          access_token: user.access_token
+        });
+      })
+      .catch(function(err) {
+        res.serverError(err);
+      });
   },
 
   logout: function(req, res) {
     var accessToken = req.body.token;
     if (!accessToken) return res.notFound('No such session');
-    User.findOne({
-      access_token: accessToken
-    }, function(err, user) {
-      if (err) return res.serverError(err);
-      if (!user) return res.notFound('No such session');
-      user.access_token = null;
-      user.save();
-      req.logout();
-      res.ok();
-    });
+    User.findOne({ access_token: accessToken })
+      .then(function(user) {
+        if (user) {
+          user.access_token = null;
+          return user.save();
+        } else {
+          res.notFound('No such session');
+        }
+      })
+      .then(function() {
+        req.logout();
+        res.ok();
+      })
+      .catch(function(err) {
+        res.serverError(err);
+      });
   }
 
 };
