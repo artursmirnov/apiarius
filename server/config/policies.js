@@ -61,5 +61,13 @@ module.exports.policies = {
 
     logout: true
 
+  },
+
+  RepositoryController: {
+    '*': true
+  },
+
+  RepoUserController: {
+    '*': true
   }
 };

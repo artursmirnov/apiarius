@@ -1,3 +1,4 @@
+/* global SourceProvider */
 /**
  * sessionAuth
  *
@@ -17,6 +18,10 @@ module.exports = function(req, res, next) {
   User.findOne({ access_token: token }, function(err, user) {
     if (err || !user) return res.unauthorized();
     req.user = user;
+    SourceProvider.authenticate({
+      type: 'oauth',
+      token: token
+    });
     return next();
   });
 };

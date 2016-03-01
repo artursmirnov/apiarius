@@ -20,6 +20,12 @@ describe('Acceptance: Sanity', function() {
     Ember.run(application, 'destroy');
   });
 
+  describe('test', function() {
+    it('should be ok', function() {
+      expect(false).to.be.ok;
+    });
+  });
+
   it('can run tests', function() {
     expect('everthing').to.be.ok;
   });

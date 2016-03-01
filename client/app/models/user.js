@@ -1,8 +1,7 @@
 import DS from 'ember-data';
+import RepoUser from './repo-user';
 
-export default DS.Model.extend({
-  username: DS.attr('string'),
-  displayName: DS.attr('string'),
+export default RepoUser.extend({
   email: DS.attr('string'),
   githubProfile: DS.attr('string')
 });
