@@ -1,1 +1,46 @@
+<h3>Releases</h3>
+<ul>
+  {{#unless isLoadingReleases}}
+    {{#each releases as |release|}}
+      <li>
+        {{release.name}}
+      </li>
+    {{else}}
+      <li>No releases found</li>
+    {{/each}}
+  {{else}}
+    Loading...
+  {{/unless}}
+</ul>
+
+<h3>Tags</h3>
+<ul>
+  {{#unless isLoadingTags}}
+    {{#each tags as |tag|}}
+      <li>
+        {{tag.name}}
+      </li>
+    {{else}}
+      <li>No tags found</li>
+    {{/each}}
+  {{else}}
+    Loading...
+  {{/unless}}
+</ul>
+
+<h3>Branches</h3>
+<ul>
+  {{#unless isLoadingBranches}}
+    {{#each branches as |branch|}}
+      <li>
+        {{branch.name}}
+      </li>
+    {{else}}
+      <li>No branches found</li>
+    {{/each}}
+  {{else}}
+    Loading...
+  {{/unless}}
+</ul>
+
 {{outlet}}

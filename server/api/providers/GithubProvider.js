@@ -6,7 +6,7 @@ var github = new GithubAPI({
   version: '3.0.0',
   protocol: 'https',
   host: 'api.github.com',
-  timeout: 5000,
+  timeout: 60000,
   debug: true,
   headers: {
     'user-agent': 'apiarius-github-agent' // GitHub is happy with a unique user agent
@@ -35,6 +35,30 @@ GithubManager.prototype.getRepository = function(username, repoName) {
 
 GithubManager.prototype.getRepositoryTags = function(username, repoName, page, limit) {
   return runGithubAPI(github.repos.getTags, { user: username, repo: repoName, page: page, per_page: limit});
+};
+
+GithubManager.prototype.getRepositoryReleases = function(username, repoName, page, limit) {
+  return runGithubAPI(github.releases.listReleases, { owner: username, repo: repoName, page: page, per_page: limit});
+};
+
+GithubManager.prototype.getRepositoryBranches = function(username, repoName, page, limit) {
+  return runGithubAPI(github.repos.getBranches, { user: username, repo: repoName, page: page, per_page: limit});
+};
+
+GithubManager.prototype.getArchiveLink = function(username, repoName, refType, ref) {
+  var ref = 'refs/';
+  switch (refType) {
+    case 'tag':
+    case 'release':
+      ref += 'tags/' + ref;
+      break;
+    case 'branch':
+      ref += 'heads/' + ref;
+      break;
+    default:
+      throw new Error('Incorrect ref type');
+  }
+  return runGithubAPI(github.repos.getArchiveLink, { user: username, repo: repoName, ref: ref, archive_format: 'zipball' });
 };
 
 GithubManager.prototype.getUser = function(username) {

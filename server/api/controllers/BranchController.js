@@ -1,7 +1,7 @@
 /**
- * TagsController
+ * BranchController
  *
- * @description :: Server-side logic for managing tags
+ * @description :: Server-side logic for managing branches
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
@@ -9,22 +9,22 @@ module.exports = {
 
   index: function(req, res) {
     var username = req.query.username;
-    var reponame = req,query,repository;
+    var reponame = req.query.repository;
     if (!username || !reponame) return res.notFound();
-    SourceProvider.getRepositoryTags(username, reponame, req.query.page, req.query.limit)
-      .then(function(tags) {
-        tags = tags.map(function(tag) {
+    SourceProvider.getRepositoryBranches(username, reponame)
+      .then(function(branches) {
+        branches = branches.map(function(branch) {
           return {
-            name: tag.name
+            name: branch.name
           }
         });
         res.send({
-          tags: tags
+          branches: branches
         });
       })
       .catch(function(err) {
         res.forbidden(err);
-      })
+      });
   }
 
 };

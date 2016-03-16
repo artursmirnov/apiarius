@@ -69,5 +69,17 @@ module.exports.policies = {
 
   RepoUserController: {
     '*': true
+  },
+
+  TagController: {
+    '*': true
+  },
+
+  ReleaseController: {
+    '*': true
+  },
+
+  BranchController: {
+    '*': true
   }
 };
