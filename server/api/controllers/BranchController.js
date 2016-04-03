@@ -15,7 +15,8 @@ module.exports = {
       .then(function(branches) {
         branches = branches.map(function(branch) {
           return {
-            name: branch.name
+            name: branch.name,
+            sha: branch.commit.sha
           }
         });
         res.send({

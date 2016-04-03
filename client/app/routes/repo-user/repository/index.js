@@ -17,14 +17,6 @@ export default Ember.Route.extend({
       });
     });
 
-    controller.set('isLoadingReleases', true);
-    model.get('releases').then((releases) => {
-      controller.setProperties({
-        releases,
-        isLoadingReleases: false
-      });
-    });
-
     controller.set('isLoadingBranches', true);
     model.get('branches').then((branches) => {
       controller.setProperties({

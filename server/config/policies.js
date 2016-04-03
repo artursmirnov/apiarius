@@ -81,5 +81,13 @@ module.exports.policies = {
 
   BranchController: {
     '*': true
+  },
+
+  DirectoryController: {
+    '*': true
+  },
+
+  DocsController: {
+    '*': true
   }
 };

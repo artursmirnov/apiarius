@@ -1,24 +1,11 @@
-<h3>Releases</h3>
-<ul>
-  {{#unless isLoadingReleases}}
-    {{#each releases as |release|}}
-      <li>
-        {{release.name}}
-      </li>
-    {{else}}
-      <li>No releases found</li>
-    {{/each}}
-  {{else}}
-    Loading...
-  {{/unless}}
-</ul>
-
 <h3>Tags</h3>
 <ul>
   {{#unless isLoadingTags}}
     {{#each tags as |tag|}}
       <li>
-        {{tag.name}}
+        {{#link-to "repo-user.repository.directory" tag.sha}}
+          {{tag.name}}
+        {{/link-to}}
       </li>
     {{else}}
       <li>No tags found</li>
@@ -33,7 +20,9 @@
   {{#unless isLoadingBranches}}
     {{#each branches as |branch|}}
       <li>
-        {{branch.name}}
+        {{#link-to "repo-user.repository.directory" branch.sha}}
+          {{branch.name}}
+        {{/link-to}}
       </li>
     {{else}}
       <li>No branches found</li>

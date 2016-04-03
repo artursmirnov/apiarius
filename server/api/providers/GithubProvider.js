@@ -45,20 +45,9 @@ GithubManager.prototype.getRepositoryBranches = function(username, repoName, pag
   return runGithubAPI(github.repos.getBranches, { user: username, repo: repoName, page: page, per_page: limit});
 };
 
-GithubManager.prototype.getArchiveLink = function(username, repoName, refType, ref) {
-  var ref = 'refs/';
-  switch (refType) {
-    case 'tag':
-    case 'release':
-      ref += 'tags/' + ref;
-      break;
-    case 'branch':
-      ref += 'heads/' + ref;
-      break;
-    default:
-      throw new Error('Incorrect ref type');
-  }
-  return runGithubAPI(github.repos.getArchiveLink, { user: username, repo: repoName, ref: ref, archive_format: 'zipball' });
+GithubManager.prototype.getArchiveLink = function(username, reponame, commit) {
+  var url = 'https://github.com/' + username + '/' + reponame + '/archive/' + commit + '.zip';
+  return rsvp.Promise.resolve(url);
 };
 
 GithubManager.prototype.getUser = function(username) {

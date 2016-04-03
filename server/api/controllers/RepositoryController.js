@@ -25,7 +25,6 @@ module.exports = {
               name: repository.name,
               links: {
                 tags: sails.config.blueprints.prefix + '/tag?username=' + username + '&repository=' + repository.name,
-                releases: sails.config.blueprints.prefix + '/release?username=' + username + '&repository=' + repository.name,
                 branches: sails.config.blueprints.prefix + '/branch?username=' + username + '&repository=' + repository.name
               }
             };

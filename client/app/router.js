@@ -10,7 +10,9 @@ Router.map(function() {
   this.route('login-error');
 
   this.route('repo-user', { path: '/:username' }, function() {
-    this.route('repository', { path: '/:repository' }, function() {});
+    this.route('repository', { path: '/:repository' }, function() {
+      this.route('directory', { path: '/:sha' });
+    });
   });
 });
 

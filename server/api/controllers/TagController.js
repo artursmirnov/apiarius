@@ -15,7 +15,8 @@ module.exports = {
       .then(function(tags) {
         tags = tags.map(function(tag) {
           return {
-            name: tag.name
+            name: tag.name,
+            sha: tag.commit.sha
           }
         });
         res.send({
