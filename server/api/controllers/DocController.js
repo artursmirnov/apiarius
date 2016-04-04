@@ -1,7 +1,7 @@
 /**
- * DirectoryController
+ * DocController
  *
- * @description :: Server-side logic for managing Directories
+ * @description :: Server-side logic for managing Docs
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
@@ -14,13 +14,13 @@ module.exports = {
     if (!username || !repo || !commit) {
       return res.notFound();
     }
-    return res.send({
-      directories: [
-        {
-          commit: commit
-        }
-      ]
-    });
+    SourceProvider.fetchSources(username, repo, commit)
+      .then(function() {
+        res.ok();
+      })
+      .catch(function(err) {
+        return res.forbidden(err);
+      });
   }
 
 };

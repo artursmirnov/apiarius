@@ -5,9 +5,9 @@ export default Ember.Route.extend({
   model(params) {
     // TODO get directory data with a link to doc data from `DirectoryController`
     let username = this.modelFor('repo-user').get('username');
-    let reponame = this.modelFor('repo-user.repository').get('name');
+    let repo = this.modelFor('repo-user.repository').get('name');
     let commit = params.sha;
-    return this.store.queryRecord('directory', { username, reponame, commit });
+    return this.store.queryRecord('directory', { username, repo, commit });
   },
 
   setupController(controller, model) {

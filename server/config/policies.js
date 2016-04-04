@@ -87,7 +87,7 @@ module.exports.policies = {
     '*': true
   },
 
-  DocsController: {
+  DocController: {
     '*': true
   }
 };
