@@ -16,7 +16,7 @@ export default DS.RESTAdapter.extend(AuthDataAdapterMixin, {
   authorizer: 'authorizer:apiarius-github',
 
   pathForType(modelName) {
-    return Ember.String.decamelize(modelName);
+    return Ember.String.decamelize(modelName).replace('-', '');
   }
 
 });

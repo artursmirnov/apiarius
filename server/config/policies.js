@@ -61,5 +61,33 @@ module.exports.policies = {
 
     logout: true
 
+  },
+
+  RepositoryController: {
+    '*': true
+  },
+
+  RepoUserController: {
+    '*': true
+  },
+
+  TagController: {
+    '*': true
+  },
+
+  ReleaseController: {
+    '*': true
+  },
+
+  BranchController: {
+    '*': true
+  },
+
+  DirectoryController: {
+    '*': true
+  },
+
+  DocController: {
+    '*': true
   }
 };

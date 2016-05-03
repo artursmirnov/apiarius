@@ -1,0 +1,7 @@
+<ul>
+  {{#each model as |repo|}}
+    <li>
+      {{#link-to "repo-user.repository" repo.name}}{{repo.name}}{{/link-to}}
+    </li>
+  {{/each}}
+</ul>
