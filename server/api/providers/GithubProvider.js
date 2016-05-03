@@ -1,14 +1,10 @@
-
+var BaseProvider = require('./BaseProvider');
 var rsvp = require('rsvp');
 var GithubAPI = require('github');
 var fs = require('fs-extra');
 var path = require('path');
 var wget = require('wget-improved');
 var Zip = require('adm-zip');
-
-var DOCS_ROOT_PATH = path.resolve('output');
-var TMP_DIR_NAME = '.tmp';
-var ARCHIVE_FILE_NAME = 'sources.zip';
 
 var github = new GithubAPI({
   version: '3.0.0',
@@ -21,63 +17,68 @@ var github = new GithubAPI({
   }
 });
 
-function GithubManager() {}
+module.exports = GithubProvider;
 
-module.exports = GithubManager;
+/**
+ * @class GithubProvider
+ * @extends BaseProvider
+ * @constructor
+ */
+function GithubProvider() {}
+GithubProvider.prototype = new BaseProvider();
 
-GithubManager.prototype.authenticate = function(data) {
+GithubProvider.prototype.authenticate = function(data) {
   return github.authenticate(data);
 };
 
-GithubManager.prototype.fetchSources = function(username, repo, commit) {
-  var archiveDir = path.join(DOCS_ROOT_PATH, username, repo, commit, TMP_DIR_NAME);
+GithubProvider.prototype.fetchSources = function(username, repo, commit) {
+  var archiveDir = this.getArchiveDir(username, repo, commit);
+  var archivePath = this.getArchivePath(username, repo, commit);
   fs.ensureDirSync(archiveDir);
-  var archivePath = path.join(archiveDir, ARCHIVE_FILE_NAME);
   return this.getArchiveLink(username, repo, commit)
     .then(function(archiveLink) {
       return new rsvp.Promise(function(resolve, reject) {
         var download = wget.download(archiveLink, archivePath);
-        download.on('end', function(output) {
-          resolve(output);
+        download.on('end', function() {
+          var entryName = repo + '-' + commit;
+          var zip = new Zip(archivePath);
+          zip.extractAllTo(archiveDir);
+          fs.removeSync(archivePath);
+          resolve(path.join(archiveDir, entryName));
         });
         download.on('error', function(err) {
           reject(err);
         });
       });
-    })
-    .then(function() {
-      var zip = new Zip(archivePath);
-      zip.extractAllTo(archiveDir, true);
-      return rsvp.Promise.resolve();
-    })
+    });
 };
 
-GithubManager.prototype.getRepositories = function(username) {
+GithubProvider.prototype.getRepositories = function(username) {
   return runGithubAPI(github.repos.getFromUser, { user: username });
 };
 
-GithubManager.prototype.getRepository = function(username, repo) {
+GithubProvider.prototype.getRepository = function(username, repo) {
   return runGithubAPI(github.repos.get, { user: username, repo: repo });
 };
 
-GithubManager.prototype.getRepositoryTags = function(username, repo, page, limit) {
+GithubProvider.prototype.getRepositoryTags = function(username, repo, page, limit) {
   return runGithubAPI(github.repos.getTags, { user: username, repo: repo, page: page, per_page: limit});
 };
 
-GithubManager.prototype.getRepositoryReleases = function(username, repo, page, limit) {
+GithubProvider.prototype.getRepositoryReleases = function(username, repo, page, limit) {
   return runGithubAPI(github.releases.listReleases, { owner: username, repo: repo, page: page, per_page: limit});
 };
 
-GithubManager.prototype.getRepositoryBranches = function(username, repo, page, limit) {
+GithubProvider.prototype.getRepositoryBranches = function(username, repo, page, limit) {
   return runGithubAPI(github.repos.getBranches, { user: username, repo: repo, page: page, per_page: limit});
 };
 
-GithubManager.prototype.getArchiveLink = function(username, repo, commit) {
+GithubProvider.prototype.getArchiveLink = function(username, repo, commit) {
   var url = 'https://github.com/' + username + '/' + repo + '/archive/' + commit + '.zip';
   return rsvp.Promise.resolve(url);
 };
 
-GithubManager.prototype.getUser = function(username) {
+GithubProvider.prototype.getUser = function(username) {
   return runGithubAPI(github.user.getFrom, { user: username });
 };
 
